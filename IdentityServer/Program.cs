@@ -7,9 +7,17 @@ builder.Services.AddIdentityServer()
     .AddInMemoryApiScopes(Config.ApiScopes)
     .AddDeveloperSigningCredential();
 
+builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
+app.UseStaticFiles();
+app.UseRouting();
 app.UseIdentityServer();
-app.MapGet("/", () => "Hello World!");
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapDefaultControllerRoute();
+});
 
 app.Run();
