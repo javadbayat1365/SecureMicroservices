@@ -39,14 +39,19 @@ namespace IdentityServer
                        AllowedScopes = new List<string>
                        {
                            IdentityServerConstants.StandardScopes.OpenId,
-                           IdentityServerConstants.StandardScopes.Profile
+                           IdentityServerConstants.StandardScopes.Profile,
+                           IdentityServerConstants.StandardScopes.Address,
+                           IdentityServerConstants.StandardScopes.Email,
+                           "movieAPI",
+                           "roles"
                        }
                    }
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[] {
-             new ApiScope(_movieApi,"Movie API")
+             new ApiScope(_movieApi,"Movie API"),
+             new ApiScope("movieClient","Movie Clint")
             };
 
         public static IEnumerable<ApiResource> ApiResources =>
@@ -54,8 +59,14 @@ namespace IdentityServer
 
         public static IEnumerable<IdentityResource> IdentityResources =>
             new IdentityResource[] {
-            new IdentityResources.OpenId(),
-            new IdentityResources.Profile()
+             new IdentityResources.OpenId(),
+              new IdentityResources.Profile(),
+              new IdentityResources.Address(),
+              new IdentityResources.Email(),
+              new IdentityResource(
+                    "roles",
+                    "Your role(s)",
+                    new List<string>() { "role" })
             };
 
         public static List<TestUser> TestUsers =>
