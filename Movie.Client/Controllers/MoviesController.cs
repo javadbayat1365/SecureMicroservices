@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Build.Framework;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Movie.Client.ApiServices;
 using System.Diagnostics;
@@ -31,6 +34,13 @@ public class MoviesController : Controller
         {
             Debug.WriteLine($"claim type:{item.Type} and claim value: {item.Value}");
         }
+    }
+
+    public async Task Logout()
+    {
+        //SignOut("Cookies", "oidc");
+       await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+       await HttpContext.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme);
     }
 
 }
