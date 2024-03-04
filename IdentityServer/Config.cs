@@ -19,9 +19,9 @@ namespace IdentityServer
             },
                    new Client
                    {
-                       ClientId = "movies_mvc_client",
+                       ClientId = "mvc",
                        ClientName = "Movies MVC Web App",
-                       AllowedGrantTypes = GrantTypes.Hybrid,
+                       AllowedGrantTypes = GrantTypes.Code,
                        RequirePkce = false,
                        AllowRememberConsent = false,
                        RedirectUris = new List<string>()
@@ -79,8 +79,8 @@ namespace IdentityServer
                     Password = "bayat",
                     Claims = new List<Claim>
                     {
-                        new Claim(JwtClaimTypes.GivenName, "Javad"),
-                        new Claim(JwtClaimTypes.FamilyName, "Bayat")
+                        new Claim(JwtClaimTypes.GivenName, "Javati"),
+                        new Claim(JwtClaimTypes.FamilyName, "Bayati")
                     }
                 }
             };

@@ -2,6 +2,6 @@
 {
     public interface IMovieApiService
     {
-        Task<List<Models.Movie>> GetAll();
+        Task<List<Models.Movie>> GetMovies();
     }
 }
