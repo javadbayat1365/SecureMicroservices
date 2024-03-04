@@ -3,6 +3,7 @@ using IdentityServer;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddIdentityServer()
+    .AddInMemoryIdentityResources(Config.IdentityResources)
     .AddInMemoryClients(Config.Clients)
     .AddInMemoryApiScopes(Config.ApiScopes)
     .AddTestUsers(Config.TestUsers)
