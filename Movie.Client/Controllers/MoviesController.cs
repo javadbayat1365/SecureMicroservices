@@ -22,7 +22,7 @@ public class MoviesController : Controller
     public async Task<IActionResult> Index()
     {
         await LogTokenAndClaims();
-        return View(await _movieApi.GetAll());
+        return View(await _movieApi.GetMovies());
     }
 
     public async Task LogTokenAndClaims()
