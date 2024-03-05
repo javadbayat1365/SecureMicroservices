@@ -6,7 +6,7 @@ using Movies.API.Models;
 
 namespace Movies.API.Controllers
 {
-    [Route("api/Controller")]
+    [Route("api/[Controller]")]
     [ApiController]
     [Authorize("ClientIdPolicy")]
     public class MoviesController : ControllerBase
