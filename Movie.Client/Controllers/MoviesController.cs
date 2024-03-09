@@ -25,6 +25,14 @@ public class MoviesController : Controller
         return View(await _movieApi.GetMovies());
     }
 
+    [HttpGet]
+    [Authorize(Roles ="admin")]
+    public async Task<IActionResult> OnlyAdmin()
+    {
+        var userInfo = await _movieApi.GetUserInfo();
+        return View(userInfo);
+    }
+
     public async Task LogTokenAndClaims()
     {
         var idnetityToken = await HttpContext.GetTokenAsync(OpenIdConnectParameterNames.IdToken);
