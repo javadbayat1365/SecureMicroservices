@@ -8,10 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
-var authenticationProviderKey = "IdentityApiKey";
-
 builder.Services.AddAuthentication()
-	.AddJwtBearer(authenticationProviderKey, x => {
+	.AddJwtBearer("IdentityApiKey", x => {
 		x.Authority = "https://localhost:5005"; // Identity Server Url
 		x.TokenValidationParameters = new TokenValidationParameters {
 			ValidateAudience = false
